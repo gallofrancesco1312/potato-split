@@ -23,6 +23,7 @@ import { BackgroundGradient } from '~/components/ui/background-gradient';
 import { Button } from '~/components/ui/button';
 
 import { LanguageSelector } from '~/components/LanguageSelector';
+import { Wordmark } from '~/components/ui/wordmark';
 import { customServerSideTranslations } from '~/utils/i18n/server';
 import { SiGithub } from '@icons-pack/react-simple-icons';
 
@@ -55,9 +56,7 @@ export default function Home() {
     <>
       <main className="min-h-screen">
         <nav className="sticky z-40 mx-auto flex max-w-5xl items-center justify-between px-4 py-4 lg:px-0 lg:py-5">
-          <div className="flex items-center gap-2">
-            <p className="font-display text-2xl">{t('nav.app_name')}</p>
-          </div>
+          <Wordmark name={t('nav.app_name')} />
           <div className="flex items-center gap-8">
             <LanguageSelector />
             <Link href="/terms">{t('nav.terms')}</Link>

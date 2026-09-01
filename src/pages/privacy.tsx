@@ -2,6 +2,7 @@ import { type NextPage } from 'next';
 import Link from 'next/link';
 
 import { env } from '~/env';
+import { Wordmark } from '~/components/ui/wordmark';
 
 const Privacy: NextPage<{ feedbackEmail: string }> = ({ feedbackEmail }) => (
   <>
@@ -9,9 +10,7 @@ const Privacy: NextPage<{ feedbackEmail: string }> = ({ feedbackEmail }) => (
       <main className="mx-auto max-w-4xl px-4 pb-32 lg:px-0">
         <nav className="sticky mx-auto flex max-w-5xl items-center justify-between px-4 py-4 lg:px-0 lg:py-5">
           <Link href="/">
-            <div className="flex items-center gap-2">
-              <p className="font-display text-2xl">SplitPotato</p>
-            </div>
+            <Wordmark name="SplitPotato" />
           </Link>
         </nav>
         <h1 className="font-display border-border mt-20 border-b pb-4 text-3xl tracking-tight">

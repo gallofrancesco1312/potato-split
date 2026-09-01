@@ -12,6 +12,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
 import { LoadingSpinner } from '../ui/spinner';
+import { Wordmark } from '../ui/wordmark';
 
 interface MainLayoutProps {
   title?: React.ReactNode;
@@ -42,10 +43,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({
         )}
       >
         <nav className="item-center -ml-[170px] hidden w-[170px] px-4 py-4 lg:flex lg:flex-col lg:gap-2">
-          <Link href="/balances" className="mb-8 flex items-center gap-2">
-            <span className="text-xl font-medium">
-              {t?.('meta.application_name') ?? 'SplitPotato'}
-            </span>
+          <Link href="/balances" className="mb-8 block">
+            <Wordmark name={t?.('meta.application_name') ?? 'SplitPotato'} />
           </Link>
           <NavItemDesktop
             title={t?.('navigation.balances') ?? 'Balances'}
