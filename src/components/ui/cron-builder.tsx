@@ -401,10 +401,7 @@ export function CronBuilder({ onChange, value, className }: CronBuilderProps) {
                 if (cronString.status)
                   return (
                     <p className="bg-card text-card-foreground overflow-clip rounded-sm p-3">
-                      {cronString.value}{' '}
-                      <span className="bg-accent text-accent-foreground rounded-sm p-1 px-2 font-mono">
-                        cron({cronExpression})
-                      </span>
+                      {cronString.value}
                     </p>
                   );
                 else
