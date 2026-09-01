@@ -248,16 +248,16 @@ export const CurrencyConversion: React.FC<{
                     disabled={getCurrencyRate.isPending || currency === targetCurrency}
                   />
                   {currency !== targetCurrency && getCurrencyRate.isPending && (
-                    <span className="pointer-events-none text-xs text-gray-500">
+                    <span className="pointer-events-none text-xs text-muted-foreground">
                       {t('currency_conversion.fetching_rate')}
                     </span>
                   )}
                   {Boolean(rate) && (
                     <>
-                      <span className="pointer-events-none text-xs text-gray-500">
+                      <span className="pointer-events-none text-xs text-muted-foreground">
                         1 {currency} = {Number(rate).toFixed(ratePrecision)} {targetCurrency}
                       </span>
-                      <span className="pointer-events-none text-xs text-gray-500">
+                      <span className="pointer-events-none text-xs text-muted-foreground">
                         1 {targetCurrency} = {(1 / Number(rate)).toFixed(ratePrecision)} {currency}
                       </span>
                     </>

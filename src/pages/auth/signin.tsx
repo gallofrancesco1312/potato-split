@@ -229,7 +229,7 @@ const Home: NextPage<{
                     .filter((provider) => 'email' !== provider.id)
                     .map((provider) => (
                       <Button
-                        className="mx-auto my-2 flex w-[300px] items-center gap-3 bg-white hover:bg-gray-100 focus:bg-gray-100"
+                        className="mx-auto my-2 flex w-[300px] items-center gap-3 bg-primary hover:bg-primary/90 focus:bg-primary"
                         onClick={handleProviderSignIn(provider.id)}
                         key={provider.id}
                       >
@@ -242,7 +242,7 @@ const Home: NextPage<{
                       <p className="bg-background z-10 ml-[150px] -translate-x-1/2 px-4 text-sm">
                         {t('ui.or')}
                       </p>
-                      <div className="absolute h-px w-[300px] bg-linear-to-r from-zinc-800 via-zinc-300 to-zinc-800" />
+                      <div className="absolute h-px w-[300px] bg-linear-to-r from-transparent via-border to-transparent" />
                     </div>
                   )}
                   {providers.find((provider) => 'email' === provider.id) ? (
@@ -254,7 +254,7 @@ const Home: NextPage<{
                         >
                           <FormField control={emailForm.control} name="email" render={field} />
                           <Button
-                            className="mt-6 w-[300px] bg-white hover:bg-gray-100 focus:bg-gray-100"
+                            className="mt-6 w-[300px] bg-primary hover:bg-primary/90 focus:bg-primary"
                             type="submit"
                             disabled={'sending' === emailStatus}
                           >

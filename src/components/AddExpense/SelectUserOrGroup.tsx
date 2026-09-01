@@ -11,6 +11,7 @@ import { useAddExpenseStore } from '~/store/addStore';
 import { api } from '~/utils/api';
 import { deserializeDefaultSplit } from '~/lib/defaultSplit';
 
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 import { EntityAvatar } from '../ui/avatar';
 import { Button } from '../ui/button';
 
@@ -109,7 +110,7 @@ export const SelectUserOrGroup: React.FC<{
 
   if (group) {
     return (
-      <div className="mt-4 text-center text-red-500">
+      <div className="mt-4 text-center text-destructive">
         {t('expense_details.add_expense_details.select_user_or_group.only_one_group_time')}
       </div>
     );
@@ -131,49 +132,56 @@ export const SelectUserOrGroup: React.FC<{
 
   return (
     <div className="mt-1">
-      <div>
-        <div>
-          {enableSendingInvites ? (
-            <div className="mt-1 text-orange-600">
-              {isEmail.success
-                ? t('expense_details.add_expense_details.select_user_or_group.warning')
-                : null}
-            </div>
-          ) : (
-            <div>{t('expense_details.add_expense_details.select_user_or_group.note')}</div>
-          )}
-        </div>
-        <div className="flex flex-wrap justify-center gap-x-4">
-          {enableSendingInvites && (
-            <Button
-              className="mt-4 text-cyan-500 hover:text-cyan-500"
-              variant="outline"
-              disabled={!isEmail.success}
-              onClick={handleAddEmailClickFalse}
-            >
-              <SendIcon className="mr-2 h-4 w-4" />
-              {t('expense_details.add_expense_details.select_user_or_group.send_invite')}
-            </Button>
-          )}
-          <Button
-            className="mt-4 text-cyan-500 hover:text-cyan-500"
-            variant="outline"
-            disabled={!isEmail.success}
-            onClick={handleAddEmailClickFalse}
-          >
-            <UserPlusIcon className="mr-2 h-4 w-4" />
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="add-to-split-pro" className="border-b-0">
+          <AccordionTrigger className="text-left text-sm text-muted-foreground">
             {t('expense_details.add_expense_details.select_user_or_group.add_to_split_pro')}
-          </Button>
-        </div>
-      </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div>
+              {enableSendingInvites ? (
+                <div className="mt-1 text-negative">
+                  {isEmail.success
+                    ? t('expense_details.add_expense_details.select_user_or_group.warning')
+                    : null}
+                </div>
+              ) : (
+                <div>{t('expense_details.add_expense_details.select_user_or_group.note')}</div>
+              )}
+            </div>
+            <div className="flex flex-wrap justify-center gap-x-4">
+              {enableSendingInvites && (
+                <Button
+                  className="mt-4 text-primary hover:text-primary"
+                  variant="outline"
+                  disabled={!isEmail.success}
+                  onClick={handleAddEmailClickFalse}
+                >
+                  <SendIcon className="mr-2 h-4 w-4" />
+                  {t('expense_details.add_expense_details.select_user_or_group.send_invite')}
+                </Button>
+              )}
+              <Button
+                className="mt-4 text-primary hover:text-primary"
+                variant="outline"
+                disabled={!isEmail.success}
+                onClick={handleAddEmailClickFalse}
+              >
+                <UserPlusIcon className="mr-2 h-4 w-4" />
+                {t('expense_details.add_expense_details.select_user_or_group.add_to_split_pro')}
+              </Button>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
       <div className="mt-2">
         {filteredFriends?.length ? (
           <>
-            <div className="font-normal text-gray-500">{t('actors.friends')}</div>
+            <div className="font-normal text-muted-foreground">{t('actors.friends')}</div>
             {filteredFriends.map((f) => (
               <button
                 key={f.id}
-                className="flex w-full items-center justify-between border-b border-gray-900 py-4"
+                className="flex w-full items-center justify-between border-b border-border py-4"
                 onClick={() => handleFriendClick(f)}
               >
                 <div className="flex min-w-0 items-center gap-4">
@@ -193,12 +201,12 @@ export const SelectUserOrGroup: React.FC<{
         {/*Can't select multiple groups or groups with outside ppl */}
         {filteredGroups?.length && 1 === participants.length ? (
           <>
-            <div className="mt-8 text-gray-500">{t('actors.groups')}</div>
+            <div className="mt-8 text-muted-foreground">{t('actors.groups')}</div>
             <div className="mt-2 flex flex-col gap-1">
               {filteredGroups.map((g) => (
                 <button
                   key={g.groupId}
-                  className="border-b border-gray-900 py-4"
+                  className="border-b border-border py-4"
                   onClick={() => onGroupSelect(g.group)}
                 >
                   <div className="flex min-w-0 items-center gap-4">

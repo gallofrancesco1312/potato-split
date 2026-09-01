@@ -4,7 +4,7 @@ import { type Session } from 'next-auth';
 import { SessionProvider, useSession } from 'next-auth/react';
 import { appWithTranslation, useTranslation } from 'next-i18next';
 import { type AppType } from 'next/app';
-import { Poppins } from 'next/font/google';
+import { Archivo, Fraunces } from 'next/font/google';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -20,7 +20,12 @@ import { api } from '~/utils/api';
 import 'react-easy-crop/react-easy-crop.css';
 import '~/styles/globals.css';
 
-const poppins = Poppins({ weight: ['200', '300', '400', '500', '600', '700'], subsets: ['latin'] });
+const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo' });
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  axes: ['SOFT', 'WONK'],
+});
 const toastOptions = { duration: 1500 };
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -41,7 +46,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   const baseUrl = global?.window?.location?.origin;
 
   return (
-    <main className={clsx(poppins.className, 'h-full')}>
+    <main className={clsx(archivo.variable, fraunces.variable, 'h-full font-sans')}>
       <Head>
         <title>{t('meta.title')}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -55,7 +60,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <meta name="msapplication-TileColor" content="#2B5797" />
         <meta name="msapplication-tap-highlight" content="no" />
 
-        <meta name="theme-color" content="#030711" />
+        <meta name="theme-color" content="#0F0C0A" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
         <link rel="apple-touch-icon" href="/icons/ios/144.png" />

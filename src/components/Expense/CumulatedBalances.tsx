@@ -10,9 +10,13 @@ export const CumulatedBalances: React.FC<{
   entityType?: 'group';
   balances?: { currency: string; amount: bigint }[];
 }> = ({ entityId, entityType, balances }) => {
-  const { t } = useTranslationWithUtils();
+  const { t, getCurrencyHelpersCached } = useTranslationWithUtils();
 
   const selectedCurrency = useCurrencyPreferenceStore((s) => s.getPreference(entityId, entityType));
+  const userDefaultCurrency = useCurrencyPreferenceStore((s) => s.userDefaultCurrency);
+  const zeroCurrency = isCurrencyCode(selectedCurrency)
+    ? selectedCurrency
+    : (userDefaultCurrency ?? 'USD');
 
   const allNonZeroCurrencies = useMemo(() => {
     const nonZeroBalances = balances?.filter((b) => b.amount !== 0n);
@@ -27,56 +31,86 @@ export const CumulatedBalances: React.FC<{
   }
 
   return (
-    <div className="flex flex-col gap-1">
+    <header className="border-border border-b pb-6">
       {isCurrencyCode(selectedCurrency) ? (
-        <CumulatedBalanceDisplay
-          prefix={`${t('ui.total_balance')}: `}
-          entityId={entityId}
-          entityType={entityType}
-          cumulatedBalances={balances}
-          currencies={allNonZeroCurrencies}
-        />
-      ) : (
         <>
-          <CumulatedBalanceDisplay
-            prefix={`${t('actors.you')} ${t('ui.expense.you.lent')}`}
-            entityId={entityId}
-            entityType={entityType}
-            cumulatedBalances={youLent}
-            className="text-positive"
-            forceShowButton={allNonZeroCurrencies.length > 1}
-            currencies={allNonZeroCurrencies}
-          />
-          <CumulatedBalanceDisplay
-            prefix={`${t('actors.you')} ${t('ui.expense.you.owe')}`}
-            entityId={entityId}
-            entityType={entityType}
-            className="text-negative"
-            cumulatedBalances={youOwe}
-            forceShowButton={allNonZeroCurrencies.length > 1}
-            currencies={allNonZeroCurrencies}
-          />
+          <p className="eyebrow">{t('ui.total_balance')}</p>
+          <div className="font-display tnum mt-3 flex items-center text-5xl leading-none tracking-tight">
+            {0 === balances.length ? (
+              <span className="text-muted-foreground">
+                {getCurrencyHelpersCached(zeroCurrency).toUIString(0n)}
+              </span>
+            ) : (
+              <CumulatedBalanceDisplay
+                entityId={entityId}
+                entityType={entityType}
+                cumulatedBalances={balances}
+                currencies={allNonZeroCurrencies}
+              />
+            )}
+          </div>
         </>
+      ) : (
+        <dl className="grid grid-cols-2">
+          <div>
+            <dt className="eyebrow">
+              {t('actors.you')} {t('ui.expense.you.lent')}
+            </dt>
+            <dd className="tnum mt-2 flex flex-wrap text-base">
+              {youLent.length ? (
+                <CumulatedBalanceDisplay
+                  entityId={entityId}
+                  entityType={entityType}
+                  cumulatedBalances={youLent}
+                  currencies={allNonZeroCurrencies}
+                  hideSwitcher
+                />
+              ) : (
+                <span className="text-muted-foreground">
+                  {getCurrencyHelpersCached(zeroCurrency).toUIString(0n)}
+                </span>
+              )}
+            </dd>
+          </div>
+          <div className="text-right">
+            <dt className="eyebrow">
+              {t('actors.you')} {t('ui.expense.you.owe')}
+            </dt>
+            <dd className="tnum mt-2 flex flex-wrap justify-end text-base">
+              {youOwe.length ? (
+                <CumulatedBalanceDisplay
+                  entityId={entityId}
+                  entityType={entityType}
+                  cumulatedBalances={youOwe}
+                  currencies={allNonZeroCurrencies}
+                  hideSwitcher
+                />
+              ) : (
+                <span className="text-muted-foreground">
+                  {getCurrencyHelpersCached(zeroCurrency).toUIString(0n)}
+                </span>
+              )}
+            </dd>
+          </div>
+        </dl>
       )}
-      {0 === balances.length ? <div className="text-gray-500">{t('ui.settled_up')}</div> : null}
-    </div>
+    </header>
   );
 };
+
 const CumulatedBalanceDisplay: React.FC<{
-  prefix?: string;
   entityId: number;
   entityType?: 'group';
   className?: string;
   cumulatedBalances?: { currency: string; amount: bigint }[];
-  forceShowButton?: boolean;
+  hideSwitcher?: boolean;
   currencies: string[];
 }> = ({
-  prefix = '',
   entityId,
   entityType,
   className = '',
   cumulatedBalances,
-  forceShowButton = false,
+  hideSwitcher = false,
   currencies,
 }) => {
   if (!cumulatedBalances || cumulatedBalances.length === 0) {
@@ -84,13 +118,13 @@ const CumulatedBalanceDisplay: React.FC<{
   }
 
   return (
-    <div className={cn('flex flex-wrap gap-1', className)}>
-      {prefix}
+    <div className={cn('flex flex-wrap items-center gap-1', className)}>
       <ConvertibleBalance
         balances={cumulatedBalances}
         entityId={entityId}
         entityType={entityType}
-        forceShowButton={forceShowButton}
+        forceShowButton={!hideSwitcher && 1 < currencies.length}
+        hideSwitcher={hideSwitcher}
         showMultiOption
         overrideCurrencies={currencies}
       />

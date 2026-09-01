@@ -11,13 +11,13 @@
     },
     "download_app": "Download app",
     "download_app_details": {
-      "download_as_pwa": "You can download SplitPro as a PWA to your home screen.",
+      "download_as_pwa": "You can download SplitPotato as a PWA to your home screen.",
       "title": "Download app",
       "using_android": "If you are using Android, checkout this",
       "using_ios": "If you are using iOS, checkout this",
       "video": "video"
     },
-    "download_splitpro_data": "Download SplitPro data",
+    "download_splitpro_data": "Download SplitPotato data",
     "default_balance_currency": "Default balance currency",
     "edit_name": {
       "apply_avatar": "Apply avatar",
@@ -346,9 +346,9 @@
     "text": "Join to the group and you can add, manage expenses, and track your balances"
   },
   "meta": {
-    "application_name": "SplitPro",
+    "application_name": "SplitPotato",
     "description": "Split Expenses with your friends for free",
-    "title": "SplitPro: Split Expenses with your friends for free"
+    "title": "SplitPotato: Split Expenses with your friends for free"
   },
   "balances": {
     "user_preferences": {
@@ -399,7 +399,8 @@
     "derived_edit_warning": "This expense is part of a recurrence. Changes will only affect this expense.",
     "template_delete_warning": "This is a recurring expense template. Deleting it will stop all future recurring expenses.",
     "derived_delete_warning": "This expense is part of a recurrence. Only this expense will be deleted. Future recurring expenses will continue.",
-    "view_recurring_page": "View Recurring page"
+    "view_recurring_page": "View Recurring page",
+    "set": "Set recurrence"
   },
   "ui": {
     "added_by": "Added by",
@@ -424,6 +425,7 @@
         "pay": "pays",
         "received": "received"
       },
+      "user_owes_you": "{{name}} owes you",
       "you": {
         "deleted": "deleted",
         "get": "get",
@@ -432,7 +434,8 @@
         "paid": "paid",
         "pay": "pay",
         "received": "received"
-      }
+      },
+      "you_owe_user": "You owe {{name}}"
     },
     "expense_details": "Expense details",
     "no_activity": "No activities yet",
@@ -447,9 +450,10 @@
     "settle_up_name": "Settle up",
     "settled_up": "Settled up",
     "settlement": "Settlement",
-    "share_text": "Check out SplitPro. It's an open source free alternative for Splitwise",
+    "share_text": "Check out SplitPotato. It's an open source free alternative for Splitwise",
     "show_all_currencies": "Show all currencies",
     "today": "Today",
-    "in_group": "In group"
+    "in_group": "In group",
+    "nothing": "Nothing"
   }
 }

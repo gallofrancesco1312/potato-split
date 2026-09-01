@@ -20,13 +20,13 @@
     },
     "download_app": "Descargar aplicación",
     "download_app_details": {
-      "download_as_pwa": "Podés descargar SplitPro como una PWA a tu pantalla de inicio.",
+      "download_as_pwa": "Podés descargar SplitPotato como una PWA a tu pantalla de inicio.",
       "title": "Descargar aplicación",
       "using_android": "Si usás Android, revisá este",
       "using_ios": "Si usás iOS, revisá este",
       "video": "video"
     },
-    "download_splitpro_data": "Descargar datos de SplitPro",
+    "download_splitpro_data": "Descargar datos de SplitPotato",
     "edit_name": {
       "placeholder": "Ingresá el nombre",
       "title": "Editar nombre"
@@ -321,16 +321,16 @@
     "text": "Unite al grupo y podrás agregar, gestionar gastos y seguir tus saldos"
   },
   "meta": {
-    "application_name": "SplitPro",
+    "application_name": "SplitPotato",
     "description": "Dividí gastos con tus amigos gratis",
-    "title": "SplitPro: Dividí gastos con tus amigos gratis"
+    "title": "SplitPotato: Dividí gastos con tus amigos gratis"
   },
   "navigation": {
     "account": "Cuenta",
     "activity": "Actividad",
     "add": "Agregar",
     "add_expense": "Agregar Gasto",
-    "app_name": "SplitPro",
+    "app_name": "SplitPotato",
     "balances": "Saldos",
     "groups": "Grupos",
     "recurring": "Recurrente"
@@ -413,7 +413,7 @@
     "settle_up_name": "Liquidar",
     "settled_up": "Liquidado",
     "settlement": "Liquidación",
-    "share_text": "Echale un vistazo a SplitPro. Es una alternativa gratuita de código abierto a Splitwise",
+    "share_text": "Echale un vistazo a SplitPotato. Es una alternativa gratuita de código abierto a Splitwise",
     "show_all_currencies": "Mostrar todas las monedas",
     "today": "Hoy",
     "total_balance": "Balance total"

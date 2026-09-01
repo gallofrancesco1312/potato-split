@@ -23,6 +23,7 @@ const config = {
     localeDetection: false,
   },
   localePath: './public/locales',
+  reloadOnPrerender: 'development' === process.env.NODE_ENV,
 };
 
 export default config;

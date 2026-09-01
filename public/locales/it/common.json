@@ -20,13 +20,13 @@
     },
     "download_app": "Scarica l'app",
     "download_app_details": {
-      "download_as_pwa": "Puoi scaricare SplitPro come PWA sulla tua home screen.",
+      "download_as_pwa": "Puoi scaricare SplitPotato come PWA sulla tua home screen.",
       "title": "Scarica l'app",
       "using_android": "Se utilizzi Android, guarda questo",
       "using_ios": "Se utilizzi iOS, guarda questo",
       "video": "video"
     },
-    "download_splitpro_data": "Scarica i dati di SplitPro",
+    "download_splitpro_data": "Scarica i dati di SplitPotato",
     "edit_name": {
       "placeholder": "Inserisci il nome",
       "title": "Modifica nome"
@@ -322,16 +322,16 @@
     "text": "Unisciti al gruppo e potrai aggiungere, gestire spese e tracciare i tuoi saldi"
   },
   "meta": {
-    "application_name": "SplitPro",
+    "application_name": "SplitPotato",
     "description": "Dividi le spese con i tuoi amici gratuitamente",
-    "title": "SplitPro: Dividi le spese con i tuoi amici gratuitamente"
+    "title": "SplitPotato: Dividi le spese con i tuoi amici gratuitamente"
   },
   "navigation": {
     "account": "Account",
     "activity": "Attività",
     "add": "Aggiungi",
     "add_expense": "Aggiungi spesa",
-    "app_name": "SplitPro",
+    "app_name": "SplitPotato",
     "balances": "Saldi",
     "groups": "Gruppi",
     "recurring": "Ricorrente"
@@ -366,7 +366,8 @@
     "template_edit_warning": "Questa è una spesa ricorrente modello. Le modifiche si applicheranno a tutte le future spese ricorrenti.",
     "time_of_day": "Ora del giorno",
     "title": "Ricorrenza",
-    "view_recurring_page": "Visualizza pagina ricorrenze"
+    "view_recurring_page": "Visualizza pagina ricorrenze",
+    "set": "Imposta ricorrenza"
   },
   "ui": {
     "added_by": "Aggiunto da",
@@ -391,15 +392,17 @@
         "pay": "paga",
         "received": "ha ricevuto"
       },
+      "user_owes_you": "{{name}} ti deve",
       "you": {
         "deleted": "hai eliminato",
         "get": "ricevi",
-        "lent": "hai prestato",
-        "owe": "devi",
+        "lent": "devi ricevere",
+        "owe": "devi dare",
         "paid": "hai pagato",
         "pay": "paga",
         "received": "hai ricevuto"
-      }
+      },
+      "you_owe_user": "Tu devi dare a {{name}}"
     },
     "expense_details": "Dettagli spesa",
     "in_group": "Nel gruppo",
@@ -414,9 +417,10 @@
     "settle_up_name": "Regola",
     "settled_up": "Regolato",
     "settlement": "Regolamento",
-    "share_text": "Dai un'occhiata a SplitPro. È un'alternativa gratuita e open source a Splitwise",
+    "share_text": "Dai un'occhiata a SplitPotato. È un'alternativa gratuita e open source a Splitwise",
     "show_all_currencies": "Mostra tutte le valute",
     "today": "Oggi",
-    "total_balance": "Saldo totale"
+    "total_balance": "Saldo totale",
+    "nothing": "Nulla"
   }
 }

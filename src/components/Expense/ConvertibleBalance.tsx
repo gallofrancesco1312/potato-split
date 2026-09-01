@@ -24,6 +24,8 @@ interface ConvertibleBalanceProps {
   showMultiOption?: boolean;
   forceShowButton?: boolean;
   withText?: boolean;
+  /** Hide the inline currency switcher when another control on the page owns it. */
+  hideSwitcher?: boolean;
   entityId?: number;
   entityType?: 'group';
 }
@@ -35,6 +37,7 @@ export const ConvertibleBalance: React.FC<ConvertibleBalanceProps> = ({
   showMultiOption = false,
   forceShowButton = false,
   withText = false,
+  hideSwitcher = false,
   entityId,
   entityType,
 }) => {
@@ -183,48 +186,50 @@ export const ConvertibleBalance: React.FC<ConvertibleBalanceProps> = ({
 
   return (
     <span className="flex items-center gap-1">
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className={cn(
-              'h-6 w-6',
-              (totalConvertedAmount ?? 0n) > 0n && 'text-positive',
-              (totalConvertedAmount ?? 0n) < 0n && 'text-negative',
-            )}
-            disabled={ratesQuery.isLoading}
-          >
-            <EqualApproximately className="h-4 w-4" />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-64">
-          <div className="space-y-2">
-            <h4 className="text-sm font-medium">{t('ui.select_currency')}</h4>
-            <RadioGroup
-              value={selectedCurrency || SHOW_ALL_VALUE}
-              onValueChange={handleCurrencySelect}
-            >
-              {showMultiOption && (
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value={SHOW_ALL_VALUE} id={`${entityId}-show-all`} />
-                  <Label htmlFor={`${entityId}-show-all`} className="cursor-pointer">
-                    {t('ui.show_all_currencies')}
-                  </Label>
-                </div>
+      {!hideSwitcher && (
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn(
+                'h-6 w-6',
+                (totalConvertedAmount ?? 0n) > 0n && 'text-positive',
+                (totalConvertedAmount ?? 0n) < 0n && 'text-negative',
               )}
-              {availableCurrencies.map((currency) => (
-                <div key={currency} className="flex items-center space-x-2">
-                  <RadioGroupItem value={currency} id={`${entityId}-${currency}`} />
-                  <Label htmlFor={`${entityId}-${currency}`} className="cursor-pointer">
-                    {currency}
-                  </Label>
-                </div>
-              ))}
-            </RadioGroup>
-          </div>
-        </PopoverContent>
-      </Popover>
+              disabled={ratesQuery.isLoading}
+            >
+              <EqualApproximately className="h-4 w-4" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-64">
+            <div className="space-y-2">
+              <h4 className="text-sm font-medium">{t('ui.select_currency')}</h4>
+              <RadioGroup
+                value={selectedCurrency || SHOW_ALL_VALUE}
+                onValueChange={handleCurrencySelect}
+              >
+                {showMultiOption && (
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value={SHOW_ALL_VALUE} id={`${entityId}-show-all`} />
+                    <Label htmlFor={`${entityId}-show-all`} className="cursor-pointer">
+                      {t('ui.show_all_currencies')}
+                    </Label>
+                  </div>
+                )}
+                {availableCurrencies.map((currency) => (
+                  <div key={currency} className="flex items-center space-x-2">
+                    <RadioGroupItem value={currency} id={`${entityId}-${currency}`} />
+                    <Label htmlFor={`${entityId}-${currency}`} className="cursor-pointer">
+                      {currency}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+          </PopoverContent>
+        </Popover>
+      )}
       <div className={cn('flex gap-1', className)}>
         {shouldShowAll ? (
           balances.map((balance, idx) => (
@@ -267,7 +272,11 @@ const AmountDisplay: React.FC<{
   const { t, getCurrencyHelpersCached } = useTranslationWithUtils();
 
   if (amount === 0n) {
-    return <span className={cn('text-gray-500', className)}>{t('ui.settled_up')}</span>;
+    return (
+      <span className={cn('text-muted-foreground', className)}>
+        {getCurrencyHelpersCached(currency).toUIString(0n)}
+      </span>
+    );
   }
 
   const isPositive = amount > 0n;

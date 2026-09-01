@@ -25,13 +25,13 @@
     "default_balance_currency": "Domyślna waluta bilansu",
     "download_app": "Pobierz aplikację",
     "download_app_details": {
-      "download_as_pwa": "Możesz pobrać SplitPro jako PWA na swój ekran główny.",
+      "download_as_pwa": "Możesz pobrać SplitPotato jako PWA na swój ekran główny.",
       "title": "Pobierz aplikację",
       "using_android": "Jeśli używasz Androida, sprawdź ten",
       "using_ios": "Jeśli używasz iOS, sprawdź ten",
       "video": "film"
     },
-    "download_splitpro_data": "Pobierz dane SplitPro",
+    "download_splitpro_data": "Pobierz dane SplitPotato",
     "edit_name": {
       "apply_avatar": "Zastosuj awatar",
       "avatar_label": "Zdjęcie profilowe",
@@ -360,9 +360,9 @@
     "text": "Dołącz do grupy, a będziesz mógł dodawać i zarządzać wydatkami oraz śledzić swoje salda"
   },
   "meta": {
-    "application_name": "SplitPro",
+    "application_name": "SplitPotato",
     "description": "Dziel wydatki ze znajomymi za darmo",
-    "title": "SplitPro: Dziel wydatki ze znajomymi za darmo"
+    "title": "SplitPotato: Dziel wydatki ze znajomymi za darmo"
   },
   "navigation": {
     "account": "Konto",
@@ -451,7 +451,7 @@
     "settle_up_name": "Rozlicz",
     "settled_up": "Rozliczone",
     "settlement": "Rozliczenie",
-    "share_text": "Sprawdź SplitPro. To darmowa alternatywa open source dla Splitwise",
+    "share_text": "Sprawdź SplitPotato. To darmowa alternatywa open source dla Splitwise",
     "show_all_currencies": "Pokaż wszystkie waluty",
     "today": "Dzisiaj",
     "total_balance": "Saldo końcowe"
