@@ -25,13 +25,13 @@
     "default_balance_currency": "Moeda de saldo padrão",
     "download_app": "Instalar app",
     "download_app_details": {
-      "download_as_pwa": "Você pode instalar o SplitPro como um PWA na sua tela inicial.",
+      "download_as_pwa": "Você pode instalar o SplitPotato como um PWA na sua tela inicial.",
       "title": "Instalar app",
       "using_android": "Se você estiver usando Android, veja este",
       "using_ios": "Se você estiver usando iOS, veja este",
       "video": "vídeo"
     },
-    "download_splitpro_data": "Baixar dados do SplitPro",
+    "download_splitpro_data": "Baixar dados do SplitPotato",
     "edit_name": {
       "apply_avatar": "Aplicar avatar",
       "avatar_label": "Foto de perfil",
@@ -348,9 +348,9 @@
     "text": "Participe do grupo para adicionar e gerenciar despesas, e acompanhar seus saldos"
   },
   "meta": {
-    "application_name": "SplitPro",
+    "application_name": "SplitPotato",
     "description": "Divida despesas com seus amigos de graça",
-    "title": "SplitPro: Divida despesas com seus amigos de graça"
+    "title": "SplitPotato: Divida despesas com seus amigos de graça"
   },
   "navigation": {
     "account": "Conta",
@@ -439,7 +439,7 @@
     "settle_up_name": "Quitar",
     "settled_up": "Quitado",
     "settlement": "Quitação",
-    "share_text": "Confira o SplitPro. É uma alternativa grátis e de código aberto ao Splitwise",
+    "share_text": "Confira o SplitPotato. É uma alternativa grátis e de código aberto ao Splitwise",
     "show_all_currencies": "Mostrar todas as moedas",
     "today": "Hoje",
     "total_balance": "Saldo total"

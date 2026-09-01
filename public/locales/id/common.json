@@ -25,13 +25,13 @@
     "default_balance_currency": "Mata uang saldo bawaan",
     "download_app": "Unduh aplikasi",
     "download_app_details": {
-      "download_as_pwa": "Anda dapat mengunduh SplitPro sebagai PWA ke layar utama Anda.",
+      "download_as_pwa": "Anda dapat mengunduh SplitPotato sebagai PWA ke layar utama Anda.",
       "title": "Unduh aplikasi",
       "using_android": "Jika Anda menggunakan Android, lihat ini",
       "using_ios": "Jika Anda menggunakan iOS, lihat ini",
       "video": "video"
     },
-    "download_splitpro_data": "Unduh data SplitPro",
+    "download_splitpro_data": "Unduh data SplitPotato",
     "edit_name": {
       "apply_avatar": "Terapkan avatar",
       "avatar_label": "Foto profil",
@@ -348,9 +348,9 @@
     "text": "Bergabunglah ke kelompok dan Anda dapat menambahkan, mengelola pengeluaran, serta melacak saldo Anda"
   },
   "meta": {
-    "application_name": "SplitPro",
+    "application_name": "SplitPotato",
     "description": "Bagi Pengeluaran dengan teman-teman Anda secara gratis",
-    "title": "SplitPro: Bagi Pengeluaran dengan teman-teman Anda secara gratis"
+    "title": "SplitPotato: Bagi Pengeluaran dengan teman-teman Anda secara gratis"
   },
   "navigation": {
     "account": "Akun",
@@ -439,7 +439,7 @@
     "settle_up_name": "Lunasi",
     "settled_up": "Sudah dilunasi",
     "settlement": "Pelunasan",
-    "share_text": "Coba SplitPro. Ini adalah alternatif gratis dan sumber terbuka untuk Splitwise",
+    "share_text": "Coba SplitPotato. Ini adalah alternatif gratis dan sumber terbuka untuk Splitwise",
     "show_all_currencies": "Tampilkan semua mata uang",
     "today": "Hari ini",
     "total_balance": "Total saldo"

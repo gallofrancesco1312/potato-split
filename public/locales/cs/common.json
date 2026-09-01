@@ -20,13 +20,13 @@
     },
     "download_app": "Stáhnout aplikaci",
     "download_app_details": {
-      "download_as_pwa": "SplitPro si můžete stáhnout na domovskou obrazovku jako PWA.",
+      "download_as_pwa": "SplitPotato si můžete stáhnout na domovskou obrazovku jako PWA.",
       "title": "Stáhnout aplikaci",
       "using_android": "Používáte-li Android, podívejte se zde",
       "using_ios": "Používáte-li iOS, podívejte se zde",
       "video": "video"
     },
-    "download_splitpro_data": "Stáhnout data SplitPro",
+    "download_splitpro_data": "Stáhnout data SplitPotato",
     "edit_name": {
       "placeholder": "Zadejte jméno",
       "title": "Upravit jméno"
@@ -318,9 +318,9 @@
     "text": "Připojte se ke skupině a můžete přidávat a spravovat výdaje a sledovat své zůstatky"
   },
   "meta": {
-    "application_name": "SplitPro",
+    "application_name": "SplitPotato",
     "description": "Rozdělte si zdarma výdaje se svými přáteli",
-    "title": "SplitPro: Rozdělte si zdarma výdaje se svými přáteli"
+    "title": "SplitPotato: Rozdělte si zdarma výdaje se svými přáteli"
   },
   "navigation": {
     "account": "Účet",
@@ -409,7 +409,7 @@
     "settle_up_name": "Vyrovnat se",
     "settled_up": "Vyrovnáno",
     "settlement": "Vyrovnání",
-    "share_text": "Mrkni na SplitPro. Je to otevřená alternative ke Splitwise",
+    "share_text": "Mrkni na SplitPotato. Je to otevřená alternative ke Splitwise",
     "show_all_currencies": "Zobrazit všechny měny",
     "today": "Dnes",
     "total_balance": "Celkový zůstatek"

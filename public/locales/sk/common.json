@@ -20,13 +20,13 @@
     },
     "download_app": "Stiahnuť aplikáciu",
     "download_app_details": {
-      "download_as_pwa": "Môžete si stiahnuť SplitPro ako PWA na svoju domovsku obrazovku.",
+      "download_as_pwa": "Môžete si stiahnuť SplitPotato ako PWA na svoju domovsku obrazovku.",
       "title": "Stiahnuť aplikáciu",
       "using_android": "Ak používaš Android, skús toto",
       "using_ios": "Ak používaš iOS, skús toto",
       "video": "video"
     },
-    "download_splitpro_data": "Stiahnuť SplitPro dáta",
+    "download_splitpro_data": "Stiahnuť SplitPotato dáta",
     "edit_name": {
       "placeholder": "Zadaj meno",
       "title": "Zmeň meno"
@@ -313,14 +313,14 @@
     "title": "Neuhradené zostatky skupiny"
   },
   "invite_message": {
-    "in_splitpro": "v SplitPro",
+    "in_splitpro": "v SplitPotato",
     "join_to": "Pridaj sa k",
     "text": "Pridajte sa do skupiny a môžete pridávať, spravovať výdavky a sledovať svoje zostatky"
   },
   "meta": {
-    "application_name": "SplitPro",
+    "application_name": "SplitPotato",
     "description": "Rozdeľte si výdavky s priateľmi zadarmo",
-    "title": "SplitPro: Rozdeľte si výdavky s priateľmi zadarmo"
+    "title": "SplitPotato: Rozdeľte si výdavky s priateľmi zadarmo"
   },
   "navigation": {
     "account": "Účet",
@@ -409,7 +409,7 @@
     "settle_up_name": "Vyrovnať sa",
     "settled_up": "Vyrovnané",
     "settlement": "Vyrovnanie",
-    "share_text": "Pozrite si SplitPro. Je to open source bezplatná alternatíva k Splitwise",
+    "share_text": "Pozrite si SplitPotato. Je to open source bezplatná alternatíva k Splitwise",
     "show_all_currencies": "Zobraziť všetky meny",
     "today": "Dnes",
     "total_balance": "Celkový zostatok"

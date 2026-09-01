@@ -18,13 +18,13 @@
     "default_balance_currency": "Προεπιλεγμένο Νόμισμα",
     "download_app": "Κατέβασμα Εφαρμογής",
     "download_app_details": {
-      "download_as_pwa": "Μπορείτε να κατεβάσετε το SplitPro ως PWA στην αρχική σας οθόνη.",
+      "download_as_pwa": "Μπορείτε να κατεβάσετε το SplitPotato ως PWA στην αρχική σας οθόνη.",
       "title": "Κατέβασμα Εφαρμογής",
       "using_android": "Αν χρησιμοποιείτε Android, κοιτάξτε εδώ",
       "using_ios": "Αν χρησιμοποιείτε iOS, κοιτάξτε εδώ",
       "video": "βίντεο"
     },
-    "download_splitpro_data": "Λήψη Δεδομένων SplitPro",
+    "download_splitpro_data": "Λήψη Δεδομένων SplitPotato",
     "edit_name": {
       "apply_avatar": "Εφαρμογή Avatar",
       "avatar_label": "Φωτογραφία Προφίλ",
