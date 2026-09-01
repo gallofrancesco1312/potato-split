@@ -68,21 +68,21 @@ const GroupMyBalance: React.FC<GroupMyBalanceProps> = ({
   );
 
   return (
-    <div className="flex gap-2">
-      <div className="flex flex-col gap-2">
-        <CumulatedBalances entityId={groupId} entityType="group" balances={cumulatedBalances} />
+    <div className="w-full">
+      <CumulatedBalances entityId={groupId} entityType="group" balances={cumulatedBalances} />
 
+      <div className="mt-4 flex flex-col gap-1">
         {Object.entries(friendBalances)
           .slice(0, 2)
           .map(([friendId, balances]) => {
             const friend = userMap[+friendId];
             return (
-              <div key={friendId} className="text-sm text-gray-500">
+              <div key={friendId} className="text-muted-foreground text-sm">
                 {Object.entries(balances).map(([currency, amount]) => (
                   <div key={currency}>
                     {0 < amount
-                      ? `${friend?.name} ${t('ui.expense.user.owe')} ${t('actors.you_dativus').toLowerCase()}`
-                      : `${t('actors.you')} ${t('ui.expense.you.owe')} ${friend?.name}`}{' '}
+                      ? t('ui.expense.user_owes_you', { name: friend?.name })
+                      : t('ui.expense.you_owe_user', { name: friend?.name })}{' '}
                     {getCurrencyHelpersCached(currency).toUIString(amount)}
                   </div>
                 ))}
@@ -91,7 +91,7 @@ const GroupMyBalance: React.FC<GroupMyBalanceProps> = ({
           })}
 
         {2 < Object.keys(friendBalances).length ? (
-          <div className="text-sm text-gray-500">
+          <div className="text-muted-foreground text-sm">
             +{Object.keys(friendBalances).length - 2}{' '}
             {Object.keys(friendBalances).length === 3 ? t('ui.balance') : t('ui.balances')}...
           </div>

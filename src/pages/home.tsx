@@ -40,11 +40,11 @@ const FeatureCard = ({
   description: string;
 }) => (
   <div className="flex flex-col gap-1 lg:w-1/2">
-    <div className="flex flex-row justify-center gap-1 lg:flex-col">
-      <Icon className="text-primary size-6" />
+    <div className="flex flex-row justify-center gap-2 lg:flex-col lg:gap-1">
+      <Icon className="text-muted-foreground size-5" />
       <p className="text-lg font-medium">{title}</p>
     </div>
-    <p className="px-4 text-gray-400 lg:px-0">{description}</p>
+    <p className="text-muted-foreground px-4 lg:px-0">{description}</p>
   </div>
 );
 
@@ -56,7 +56,7 @@ export default function Home() {
       <main className="min-h-screen">
         <nav className="sticky z-40 mx-auto flex max-w-5xl items-center justify-between px-4 py-4 lg:px-0 lg:py-5">
           <div className="flex items-center gap-2">
-            <p className="text-2xl font-medium">{t('nav.app_name')}</p>
+            <p className="font-display text-2xl">{t('nav.app_name')}</p>
           </div>
           <div className="flex items-center gap-8">
             <LanguageSelector />
@@ -67,11 +67,11 @@ export default function Home() {
         <div className="mx-auto mt-20 flex w-full items-start justify-center gap-16 px-4 lg:max-w-5xl lg:px-0">
           <div>
             <div className="mb-32 text-center lg:mb-0 lg:h-[70vh] lg:text-left">
-              <h1 className="max-w-3xl text-center text-2xl leading-loose font-semibold text-gray-100 lg:text-left lg:text-5xl lg:leading-16">
+              <h1 className="font-display text-foreground max-w-3xl text-center text-3xl leading-tight tracking-tight lg:text-left lg:text-6xl lg:leading-[1.08]">
                 {t('hero.title_part1')}{' '}
-                <span className="text-primary font-bold">{t('hero.title_highlight')}</span>.
+                <span className="text-positive">{t('hero.title_highlight')}</span>.
               </h1>
-              <h2 className="mt-5 text-gray-300 lg:mt-8 lg:text-lg">
+              <h2 className="text-foreground mt-5 lg:mt-8 lg:text-lg">
                 {t('hero.subtitle_part1')}{' '}
                 <a
                   className="text-primary hover:underline"
@@ -108,7 +108,7 @@ export default function Home() {
               <MobileScreenShot />
             </div>
             <div className="flex flex-col gap-20 text-center lg:text-left">
-              <p className="text-2xl">{t('features.title')}</p>
+              <p className="eyebrow border-border border-b pb-4">{t('features.title')}</p>
 
               <FeatureRow>
                 <FeatureCard
@@ -230,7 +230,7 @@ export default function Home() {
                 >
                   krokosik
                 </a>
-                {/* <p className="text-gray-400">
+                {/* <p className="text-muted-foreground">
                   A product of <a className="underline underline-offset-2">ossapps.dev</a>
                 </p> */}
               </div>

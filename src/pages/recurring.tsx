@@ -69,7 +69,7 @@ const RecurringExpenseItem: React.FC<RecurringExpenseItemProps> = ({
             {t('recurrence.recurring')}
             {i18nReady && schedule ? `: ${cronParser(schedule)}` : ''}
           </p>
-          <p className="text-xs text-gray-500">{toUIDate(item.expense.expenseDate)}</p>
+          <p className="text-xs text-muted-foreground">{toUIDate(item.expense.expenseDate)}</p>
         </div>
       </Link>
       <div className="flex items-center gap-1">
@@ -143,7 +143,7 @@ const RecurringPage: NextPageWithUser = () => {
       >
         <div className="flex flex-col gap-4">
           {!recurringExpensesQuery.data?.length ? (
-            <div className="mt-[30vh] text-center text-gray-400">{t('recurrence.empty')}</div>
+            <div className="mt-[30vh] text-center text-muted-foreground">{t('recurrence.empty')}</div>
           ) : null}
           {recurringExpensesQuery.data?.map((e) => (
             <RecurringExpenseItem

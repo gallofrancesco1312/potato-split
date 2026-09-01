@@ -50,14 +50,14 @@ const VerificationStep: FC<VerificationStepProps> = ({ feedbackEmail, email, cal
       <main className="flex h-full flex-col justify-center lg:justify-normal">
         <div className="flex flex-col items-center lg:mt-20">
           <div className="mb-10 flex items-center gap-4">
-            <p className="text-primary text-3xl">SplitPro</p>
+            <p className="text-primary text-3xl">SplitPotato</p>
           </div>
           <p className="mt-6 w-[300px] text-center text-sm">{t('auth.otp_sent')}</p>
           <Form {...otpForm}>
             <form onSubmit={otpForm.handleSubmit(onOTPSubmit)} className="mt-6 space-y-8">
               <FormField control={otpForm.control} name="otp" render={OTPInput} />
 
-              <Button className="mt-6 w-[300px] bg-white hover:bg-gray-100 focus:bg-gray-100">
+              <Button className="mt-6 w-[300px] bg-primary hover:bg-primary/90 focus:bg-primary">
                 {t('actions.submit')}
               </Button>
             </form>

@@ -125,7 +125,7 @@ const AddMembers: React.FC<{
       />
       <div>
         {enableSendingInvites ? (
-          <div className="mt-1 text-orange-600">
+          <div className="mt-1 text-negative">
             {t('group_details.no_members.add_members_details.warning')}
           </div>
         ) : (
@@ -135,7 +135,7 @@ const AddMembers: React.FC<{
         <div className="flex justify-center gap-4">
           {enableSendingInvites && (
             <Button
-              className="mt-4 w-full text-cyan-500"
+              className="mt-4 w-full text-primary"
               variant="outline"
               disabled={!isEmail.success}
               onClick={() => onAddEmailClick(true)}
@@ -147,7 +147,7 @@ const AddMembers: React.FC<{
             </Button>
           )}
           <Button
-            className="mt-4 w-full text-cyan-500"
+            className="mt-4 w-full text-primary"
             variant="outline"
             disabled={!isEmail.success}
             onClick={() => onAddEmailClick(false)}

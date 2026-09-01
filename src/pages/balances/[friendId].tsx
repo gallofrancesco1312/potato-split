@@ -159,17 +159,6 @@ const FriendPage: NextPageWithUser = ({ user }) => {
             </AppDrawer>
           </div>
         }
-        header={
-          <div className="flex w-full items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Link href="/balances">
-                <ChevronLeftIcon className="mr-1 h-6 w-6" />
-              </Link>
-              <EntityAvatar entity={friendQuery.data} size={25} />
-              {displayName(friendQuery.data)}
-            </div>
-          </div>
-        }
         loading={balances.isPending || expenses.isPending || friendQuery.isPending}
       >
         {!friendQuery.data ? null : (
@@ -179,7 +168,7 @@ const FriendPage: NextPageWithUser = ({ user }) => {
               <SettleUp balances={balances.data} friend={friendQuery.data}>
                 <Button
                   size="sm"
-                  className="flex w-[150px] items-center gap-2 rounded-md border bg-cyan-500 px-3 text-sm font-normal text-black focus:bg-cyan-600 focus:ring-0 focus-visible:outline-hidden lg:w-[180px]"
+                  className="bg-primary text-primary-foreground focus:bg-primary flex w-[150px] items-center gap-2 rounded-md border px-3 text-sm font-normal focus:ring-0 focus-visible:outline-hidden lg:w-[180px]"
                   disabled={!balances.data?.length}
                 >
                   <HandCoins className="size-4" /> {t('actions.settle_up')}

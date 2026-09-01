@@ -157,16 +157,16 @@ export const SettleUp: React.FC<
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-5">
               <EntityAvatar entity={isCurrentUserPaying ? currentUser : friend} />
-              <ArrowRightIcon className="h-6 w-6 text-gray-600" />
+              <ArrowRightIcon className="h-6 w-6 text-muted-foreground" />
               <EntityAvatar entity={isCurrentUserPaying ? friend : currentUser} />
             </div>
-            <p className="mt-2 text-center text-sm text-gray-400">
+            <p className="mt-2 text-center text-sm text-muted-foreground">
               {isCurrentUserPaying
                 ? `${t('actors.you')} ${t('ui.expense.you.pay')} ${displayName(friend)}`
                 : `${displayName(friend)} ${t('ui.expense.user.pay')} ${t('actors.you')}`}
             </p>
             {balanceToSettle.groupName ? (
-              <p className="mt-1 text-center text-xs text-gray-500">{balanceToSettle.groupName}</p>
+              <p className="mt-1 text-center text-xs text-muted-foreground">{balanceToSettle.groupName}</p>
             ) : null}
           </div>
           <CurrencyInput
