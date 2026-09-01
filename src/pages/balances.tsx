@@ -168,20 +168,29 @@ const SummaryFigure: React.FC<{
   balances: { currency: string; amount: bigint }[];
   currencies: string[];
   align?: 'left' | 'right';
-}> = ({ label, balances, currencies, align = 'left' }) => (
-  <div className={'right' === align ? 'text-right' : ''}>
-    <dt className="eyebrow">{label}</dt>
-    <dd className={`tnum mt-2 flex flex-wrap text-base ${'right' === align ? 'justify-end' : ''}`}>
-      <ConvertibleBalance
-        balances={balances}
-        showMultiOption
-        hideSwitcher
-        className="flex-wrap"
-        overrideCurrencies={currencies}
-      />
-    </dd>
-  </div>
-);
+}> = ({ label, balances, currencies, align = 'left' }) => {
+  const { t } = useTranslationWithUtils();
+  const isEmpty = balances.every((b) => 0n === b.amount);
+
+  return (
+    <div className={'right' === align ? 'text-right' : ''}>
+      <dt className="eyebrow">{label}</dt>
+      <dd className={`tnum mt-2 flex flex-wrap text-base ${'right' === align ? 'justify-end' : ''}`}>
+        {isEmpty ? (
+          <span className="text-muted-foreground">{t('ui.nothing')}</span>
+        ) : (
+          <ConvertibleBalance
+            balances={balances}
+            showMultiOption
+            hideSwitcher
+            className="flex-wrap"
+            overrideCurrencies={currencies}
+          />
+        )}
+      </dd>
+    </div>
+  );
+};
 
 BalancePage.auth = true;
 

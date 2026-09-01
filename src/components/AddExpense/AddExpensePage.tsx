@@ -383,18 +383,20 @@ export const AddOrEditExpensePage: React.FC<{
               </>
             ) : null}
           </div>
-          <div className="flex items-center justify-evenly px-4 lg:px-0">
+          <div className="flex items-center justify-between px-4 lg:px-0">
             {!expenseId && (
               <RecurrenceInput>
-                <Button variant="ghost" size="sm">
-                  <RefreshCcwDot
-                    className={cn(
-                      cronExpression && 'text-primary',
-                      (!amtStr || !description) && 'invisible',
-                      'size-6',
-                    )}
-                  />
-                  <span className="sr-only">Toggle recurring expense options</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={cn(
+                    'text-muted-foreground gap-2 px-2',
+                    cronExpression && 'text-primary',
+                    (!amtStr || !description) && 'invisible',
+                  )}
+                >
+                  <RefreshCcwDot className="size-5" />
+                  {t('recurrence.set')}
                 </Button>
               </RecurrenceInput>
             )}

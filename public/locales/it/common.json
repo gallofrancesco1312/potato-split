@@ -366,7 +366,8 @@
     "template_edit_warning": "Questa è una spesa ricorrente modello. Le modifiche si applicheranno a tutte le future spese ricorrenti.",
     "time_of_day": "Ora del giorno",
     "title": "Ricorrenza",
-    "view_recurring_page": "Visualizza pagina ricorrenze"
+    "view_recurring_page": "Visualizza pagina ricorrenze",
+    "set": "Imposta ricorrenza"
   },
   "ui": {
     "added_by": "Aggiunto da",
@@ -419,6 +420,7 @@
     "share_text": "Dai un'occhiata a SplitPotato. È un'alternativa gratuita e open source a Splitwise",
     "show_all_currencies": "Mostra tutte le valute",
     "today": "Oggi",
-    "total_balance": "Saldo totale"
+    "total_balance": "Saldo totale",
+    "nothing": "Nulla"
   }
 }
