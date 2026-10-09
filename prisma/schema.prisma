@@ -39,32 +39,37 @@ model Session {
 }
 
 model User {
-  id                   Int                  @id @default(autoincrement())
-  name                 String?
-  email                String?              @unique
-  emailVerified        DateTime?
-  image                String?
-  currency             String               @default("USD")
-  defaultCurrency      String?
-  preferredLanguage    String               @default("")
-  bankingId            String?
-  obapiProviderId      String?
-  accounts             Account[]
-  friendBalances       BalanceView[]        @relation("FriendBalanceView")
-  userBalances         BalanceView[]        @relation("UserBalanceView")
-  cachedBankData       CachedBankData[]     @relation("UserCachedBankData")
-  addedExpenses        Expense[]            @relation("AddedByUser")
-  deletedExpenses      Expense[]            @relation("DeletedByUser")
-  paidExpenses         Expense[]            @relation("PaidByUser")
-  updatedExpenses      Expense[]            @relation("UpdatedByUser")
-  expenseNotes         ExpenseNote[]
-  expenseParticipants  ExpenseParticipant[]
-  groups               Group[]
-  associatedGroups     GroupUser[]
-  friendDefaultSplitsA FriendDefaultSplit[] @relation("FriendDefaultSplitUserA")
-  friendDefaultSplitsB FriendDefaultSplit[] @relation("FriendDefaultSplitUserB")
-  sessions             Session[]
-  hiddenFriendIds      Int[]                @default([])
+  id                       Int                  @id @default(autoincrement())
+  name                     String?
+  email                    String?              @unique
+  emailVerified            DateTime?
+  image                    String?
+  currency                 String               @default("USD")
+  defaultCurrency          String?
+  preferredLanguage        String               @default("")
+  bankingId                String?
+  obapiProviderId          String?
+  accounts                 Account[]
+  friendBalances           BalanceView[]        @relation("FriendBalanceView")
+  userBalances             BalanceView[]        @relation("UserBalanceView")
+  cachedBankData           CachedBankData[]     @relation("UserCachedBankData")
+  addedExpenses            Expense[]            @relation("AddedByUser")
+  deletedExpenses          Expense[]            @relation("DeletedByUser")
+  paidExpenses             Expense[]            @relation("PaidByUser")
+  updatedExpenses          Expense[]            @relation("UpdatedByUser")
+  expenseNotes             ExpenseNote[]
+  expenseParticipants      ExpenseParticipant[]
+  groups                   Group[]
+  associatedGroups         GroupUser[]
+  friendDefaultSplitsA     FriendDefaultSplit[] @relation("FriendDefaultSplitUserA")
+  friendDefaultSplitsB     FriendDefaultSplit[] @relation("FriendDefaultSplitUserB")
+  sessions                 Session[]
+  hiddenFriendIds          Int[]                @default([])
+  monthlySummaryEnabled    Boolean              @default(false)
+  monthlySummaryDay        Int                  @default(1)
+  monthlySummaryHour       Int                  @default(9)
+  monthlySummaryLastSentAt DateTime?
+  telegramChatId           String?
 
   @@schema("public")
 }

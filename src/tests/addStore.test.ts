@@ -28,6 +28,11 @@ const createMockUser = (id: number, name: string, email: string): User => ({
   obapiProviderId: null,
   bankingId: null,
   hiddenFriendIds: [],
+  monthlySummaryEnabled: false,
+  monthlySummaryDay: 1,
+  monthlySummaryHour: 9,
+  monthlySummaryLastSentAt: null,
+  telegramChatId: null,
 });
 
 const user1: User = createMockUser(1, 'Alice', 'alice@example.com');

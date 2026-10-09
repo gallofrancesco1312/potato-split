@@ -71,6 +71,7 @@ const AddPage: NextPageWithUser<{
       image: user.image ?? null,
       obapiProviderId: user.obapiProviderId ?? null,
       bankingId: user.bankingId ?? null,
+      monthlySummaryLastSentAt: null,
     });
     if (router.isReady && !groupId) {
       const preferredCurrency = user.currency ?? user.defaultCurrency;
