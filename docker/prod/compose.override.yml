@@ -1,0 +1,28 @@
+services:
+  splitpro:
+    image: potato-split:local
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    ports: !reset []
+    environment:
+      - HOSTNAME=0.0.0.0
+      - NODE_EXTRA_CA_CERTS=/certs/potato.crt
+    dns:
+      - 192.168.1.19
+      - 8.8.8.8
+    volumes:
+      - /opt/services/network/traefik/certs/potato.crt:/certs/potato.crt:ro
+    networks:
+      - default
+      - proxy
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.potato-split.rule=Host(`potato-split.home.potato`)'
+      - 'traefik.http.routers.potato-split.entrypoints=websecure'
+      - 'traefik.http.routers.potato-split.tls=true'
+      - 'traefik.http.services.potato-split.loadbalancer.server.port=3000'
+
+networks:
+  proxy:
+    external: true

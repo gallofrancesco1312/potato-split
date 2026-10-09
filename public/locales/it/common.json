@@ -55,6 +55,18 @@
         "notification_granted": "Riceverai ora le notifiche"
       }
     },
+    "monthly_summary": {
+      "title": "Resoconto mensile del saldo",
+      "enable": "Invia resoconto mensile",
+      "day": "Giorno del mese",
+      "hour": "Orario"
+    },
+    "telegram": {
+      "title": "Notifiche Telegram",
+      "description": "Scrivi al bot per trovare il tuo chat ID, poi inseriscilo qui per ricevere le notifiche su Telegram.",
+      "chat_id": "Chat ID",
+      "chat_id_placeholder": "es. 123456789"
+    },
     "star_on_github": "Dacci una stella su GitHub",
     "submit_feedback": "Invia feedback",
     "submit_feedback_details": {

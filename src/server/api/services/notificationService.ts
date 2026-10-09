@@ -1,9 +1,12 @@
 import { SplitType } from '@prisma/client';
 import { isCurrencyCode } from '~/lib/currency';
+import { isMonthlySummaryDue } from '~/lib/monthlySummarySchedule';
 import { type PushMessage } from '~/types';
 
 import { db } from '~/server/db';
+import { publishToNtfy } from '~/server/ntfy';
 import { pushNotification } from '~/server/notification';
+import { sendTelegramMessage } from '~/server/telegram';
 import { getCurrencyHelpers } from '~/utils/numbers';
 
 export const getSubscriptionEndpoint = (subscription: string) => {
@@ -43,6 +46,16 @@ export const sendPushNotificationToUsers = async (userIds: number[], pushData: P
   if (0 === userIds.length) {
     return { sentCount: 0 };
   }
+
+  void publishToNtfy(pushData);
+
+  const telegramRecipients = await db.user.findMany({
+    where: { id: { in: userIds }, telegramChatId: { not: null } },
+    select: { telegramChatId: true },
+  });
+  await Promise.all(
+    telegramRecipients.map((u) => sendTelegramMessage(u.telegramChatId!, pushData)),
+  );
 
   const subscriptions = await db.pushNotification.findMany({
     where: {
@@ -136,12 +149,7 @@ export async function sendExpensePushNotification(expenseId: string) {
   const getUserDisplayName = (user: { name: string | null; email: string | null } | null) =>
     user?.name ?? user?.email ?? '';
 
-  const formatAmount = (currency: string, amount: bigint) => {
-    const { toUIString } = getCurrencyHelpers({
-      currency: isCurrencyCode(currency) ? currency : 'USD',
-    });
-    return toUIString(amount);
-  };
+  const formatAmount = formatAmountForCurrency;
 
   const getNotificationContent = (): { title: string; message: string } => {
     const payer = getUserDisplayName(expense.paidByUser);
@@ -272,6 +280,84 @@ export async function sendGroupSimplifyDebtsToggleNotification(
     );
   } catch (error) {
     console.error('Error sending group simplify debts toggle notifications', error);
+  }
+}
+
+export async function getCumulatedBalancesForUser(userId: number) {
+  const cumulatedBalances = await db.balanceView.groupBy({
+    by: ['currency'],
+    _sum: { amount: true },
+    where: { userId, amount: { not: 0 } },
+    orderBy: { _sum: { amount: 'desc' } },
+  });
+
+  const youOwe = cumulatedBalances
+    .filter((b) => b._sum.amount && 0 > b._sum.amount)
+    .map((b) => ({ currency: b.currency, amount: b._sum.amount! }))
+    .reverse();
+
+  const youGet = cumulatedBalances
+    .filter((b) => b._sum.amount && 0 < b._sum.amount)
+    .map((b) => ({ currency: b.currency, amount: b._sum.amount! }));
+
+  return { youOwe, youGet };
+}
+
+const formatAmountForCurrency = (currency: string, amount: bigint) =>
+  getCurrencyHelpers({ currency: isCurrencyCode(currency) ? currency : 'USD' }).toUIString(amount);
+
+async function sendMonthlySummaryNotification(userId: number) {
+  const { youOwe, youGet } = await getCumulatedBalancesForUser(userId);
+
+  if (0 === youOwe.length && 0 === youGet.length) {
+    return;
+  }
+
+  const oweText = youOwe
+    .map(({ currency, amount }) => `devi ${formatAmountForCurrency(currency, amount)}`)
+    .join(', ');
+  const getText = youGet
+    .map(({ currency, amount }) => `ti devono ${formatAmountForCurrency(currency, amount)}`)
+    .join(', ');
+
+  const pushData = {
+    title: 'Resoconto del mese',
+    message: [oweText, getText].filter(Boolean).join(' • '),
+    data: { url: '/balances' },
+  };
+
+  await sendPushNotificationToUsers([userId], pushData);
+}
+
+export async function checkMonthlySummaryNotifications() {
+  try {
+    const now = new Date();
+
+    const users = await db.user.findMany({
+      where: { monthlySummaryEnabled: true },
+      select: {
+        id: true,
+        monthlySummaryDay: true,
+        monthlySummaryHour: true,
+        monthlySummaryLastSentAt: true,
+      },
+    });
+
+    const dueUsers = users.filter((user) => isMonthlySummaryDue(user, now));
+
+    await Promise.all(
+      dueUsers.map(async (user) => {
+        await sendMonthlySummaryNotification(user.id);
+        await db.user.update({
+          where: { id: user.id },
+          data: { monthlySummaryLastSentAt: now },
+        });
+      }),
+    );
+  } catch (e) {
+    console.error('Error sending monthly summary notifications', e);
+  } finally {
+    setTimeout(checkMonthlySummaryNotifications, 1000 * 60 * 15); // Check every 15 minutes
   }
 }
 

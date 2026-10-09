@@ -32,6 +32,10 @@ declare module 'next-auth' {
       bankingId?: string;
       preferredLanguage: string;
       hiddenFriendIds: number[];
+      monthlySummaryEnabled: boolean;
+      monthlySummaryDay: number;
+      monthlySummaryHour: number;
+      telegramChatId: string | null;
       // ...other properties
       // Role: UserRole;
     };
@@ -48,6 +52,10 @@ declare module 'next-auth' {
     bankingId?: string;
     preferredLanguage: string;
     hiddenFriendIds: number[];
+    monthlySummaryEnabled: boolean;
+    monthlySummaryDay: number;
+    monthlySummaryHour: number;
+    telegramChatId: string | null;
   }
 }
 
@@ -116,6 +124,10 @@ export const authOptions: NextAuthOptions = {
         bankingId: user.bankingId,
         preferredLanguage: user.preferredLanguage,
         hiddenFriendIds: user.hiddenFriendIds,
+        monthlySummaryEnabled: user.monthlySummaryEnabled,
+        monthlySummaryDay: user.monthlySummaryDay,
+        monthlySummaryHour: user.monthlySummaryHour,
+        telegramChatId: user.telegramChatId,
       },
     }),
     async signIn({ user, email }) {

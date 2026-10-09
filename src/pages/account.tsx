@@ -10,6 +10,8 @@ import { AccountButton } from '~/components/Account/AccountButton';
 import { DownloadAppDrawer } from '~/components/Account/DownloadAppDrawer';
 import { LanguagePicker } from '~/components/Account/LanguagePicker';
 import { SubmitFeedback } from '~/components/Account/SubmitFeedback';
+import { MonthlySummarySettings } from '~/components/Account/MonthlySummarySettings';
+import { TelegramSettings } from '~/components/Account/TelegramSettings';
 import { SubscribeNotification } from '~/components/Account/SubscribeNotification';
 import { UpdateName } from '~/components/Account/UpdateDetails';
 import MainLayout from '~/components/Layout/MainLayout';
@@ -128,6 +130,18 @@ const AccountPage: NextPageWithUser<{
           {feedBackPossible && <SubmitFeedback />}
 
           <SubscribeNotification />
+
+          {!userQuery.isPending && (
+            <MonthlySummarySettings
+              defaultEnabled={userQuery.data?.monthlySummaryEnabled ?? false}
+              defaultDay={userQuery.data?.monthlySummaryDay ?? 1}
+              defaultHour={userQuery.data?.monthlySummaryHour ?? 9}
+            />
+          )}
+
+          {!userQuery.isPending && (
+            <TelegramSettings defaultChatId={userQuery.data?.telegramChatId ?? ''} />
+          )}
 
           <DownloadAppDrawer>
             <AccountButton>

@@ -71,6 +71,11 @@ export const SelectUserOrGroup: React.FC<{
           bankingId: null,
           preferredLanguage: '',
           hiddenFriendIds: [],
+          monthlySummaryEnabled: false,
+          monthlySummaryDay: 1,
+          monthlySummaryHour: 9,
+          monthlySummaryLastSentAt: null,
+          telegramChatId: null,
         });
         // Add email to split pro
       }
@@ -110,7 +115,7 @@ export const SelectUserOrGroup: React.FC<{
 
   if (group) {
     return (
-      <div className="mt-4 text-center text-destructive">
+      <div className="text-destructive mt-4 text-center">
         {t('expense_details.add_expense_details.select_user_or_group.only_one_group_time')}
       </div>
     );
@@ -134,13 +139,13 @@ export const SelectUserOrGroup: React.FC<{
     <div className="mt-1">
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="add-to-split-pro" className="border-b-0">
-          <AccordionTrigger className="text-left text-sm text-muted-foreground">
+          <AccordionTrigger className="text-muted-foreground text-left text-sm">
             {t('expense_details.add_expense_details.select_user_or_group.add_to_split_pro')}
           </AccordionTrigger>
           <AccordionContent>
             <div>
               {enableSendingInvites ? (
-                <div className="mt-1 text-negative">
+                <div className="text-negative mt-1">
                   {isEmail.success
                     ? t('expense_details.add_expense_details.select_user_or_group.warning')
                     : null}
@@ -152,7 +157,7 @@ export const SelectUserOrGroup: React.FC<{
             <div className="flex flex-wrap justify-center gap-x-4">
               {enableSendingInvites && (
                 <Button
-                  className="mt-4 text-primary hover:text-primary"
+                  className="text-primary hover:text-primary mt-4"
                   variant="outline"
                   disabled={!isEmail.success}
                   onClick={handleAddEmailClickFalse}
@@ -162,7 +167,7 @@ export const SelectUserOrGroup: React.FC<{
                 </Button>
               )}
               <Button
-                className="mt-4 text-primary hover:text-primary"
+                className="text-primary hover:text-primary mt-4"
                 variant="outline"
                 disabled={!isEmail.success}
                 onClick={handleAddEmailClickFalse}
@@ -177,11 +182,11 @@ export const SelectUserOrGroup: React.FC<{
       <div className="mt-2">
         {filteredFriends?.length ? (
           <>
-            <div className="font-normal text-muted-foreground">{t('actors.friends')}</div>
+            <div className="text-muted-foreground font-normal">{t('actors.friends')}</div>
             {filteredFriends.map((f) => (
               <button
                 key={f.id}
-                className="flex w-full items-center justify-between border-b border-border py-4"
+                className="border-border flex w-full items-center justify-between border-b py-4"
                 onClick={() => handleFriendClick(f)}
               >
                 <div className="flex min-w-0 items-center gap-4">
@@ -201,12 +206,12 @@ export const SelectUserOrGroup: React.FC<{
         {/*Can't select multiple groups or groups with outside ppl */}
         {filteredGroups?.length && 1 === participants.length ? (
           <>
-            <div className="mt-8 text-muted-foreground">{t('actors.groups')}</div>
+            <div className="text-muted-foreground mt-8">{t('actors.groups')}</div>
             <div className="mt-2 flex flex-col gap-1">
               {filteredGroups.map((g) => (
                 <button
                   key={g.groupId}
-                  className="border-b border-border py-4"
+                  className="border-border border-b py-4"
                   onClick={() => onGroupSelect(g.group)}
                 >
                   <div className="flex min-w-0 items-center gap-4">

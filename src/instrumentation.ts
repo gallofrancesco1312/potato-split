@@ -16,10 +16,13 @@ export async function register() {
     const { validateAuthEnv } = await import('./server/auth');
     validateAuthEnv();
 
-    const { checkRecurrenceNotifications } =
+    const { checkRecurrenceNotifications, checkMonthlySummaryNotifications } =
       await import('./server/api/services/notificationService');
     console.log('Starting recurrent expense notification checking...');
     setTimeout(checkRecurrenceNotifications, 1000 * 10); // Start after 10 seconds
+
+    console.log('Starting monthly balance summary notification checking...');
+    setTimeout(checkMonthlySummaryNotifications, 1000 * 10); // Start after 10 seconds
   }
 
   if (process.env.NEXT_RUNTIME !== 'nodejs') {

@@ -14,6 +14,7 @@ import {
   getCurrencyRateSchema,
 } from '~/types/expense.types';
 import { createExpense, deleteExpense, editExpense } from '../services/splitService';
+import { getCumulatedBalancesForUser } from '../services/notificationService';
 import { currencyRateProvider } from '../services/currencyRateService';
 import { type CurrencyCode, isCurrencyCode } from '~/lib/currency';
 import { SplitType } from '@prisma/client';
@@ -22,25 +23,9 @@ import { getUserMap } from './user';
 import { FriendBalance } from '~/components/Friend/FriendBalance';
 
 export const expenseRouter = createTRPCRouter({
-  getCumulatedBalances: protectedProcedure.query(async ({ ctx }) => {
-    const cumulatedBalances = await db.balanceView.groupBy({
-      by: ['currency'],
-      _sum: { amount: true },
-      where: { userId: ctx.session.user.id, amount: { not: 0 } },
-      orderBy: { _sum: { amount: 'desc' } },
-    });
-
-    const youOwe = cumulatedBalances
-      .filter((b) => b._sum.amount && 0 > b._sum.amount)
-      .map((b) => ({ currency: b.currency, amount: b._sum.amount! }))
-      .reverse();
-
-    const youGet = cumulatedBalances
-      .filter((b) => b._sum.amount && 0 < b._sum.amount)
-      .map((b) => ({ currency: b.currency, amount: b._sum.amount! }));
-
-    return { youOwe, youGet };
-  }),
+  getCumulatedBalances: protectedProcedure.query(({ ctx }) =>
+    getCumulatedBalancesForUser(ctx.session.user.id),
+  ),
 
   getBalances: protectedProcedure.query(async ({ ctx }) => {
     const rawBalances = await db.balanceView.findMany({

@@ -53,6 +53,18 @@
         "notification_granted": "You will receive notifications now"
       }
     },
+    "monthly_summary": {
+      "title": "Monthly balance summary",
+      "enable": "Send monthly summary",
+      "day": "Day of month",
+      "hour": "Time"
+    },
+    "telegram": {
+      "title": "Telegram notifications",
+      "description": "Message the bot to find your chat ID, then enter it here to get notifications on Telegram.",
+      "chat_id": "Chat ID",
+      "chat_id_placeholder": "e.g. 123456789"
+    },
     "star_on_github": "Star us on GitHub",
     "submit_feedback": "Submit feedback",
     "submit_feedback_details": {
